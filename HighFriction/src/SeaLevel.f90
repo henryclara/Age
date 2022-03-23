@@ -12,11 +12,13 @@ FUNCTION getSeaLevel( Model, nodenumber, t ) RESULT( SeaLevel )
         
         !Sea level is twice increased and decreased with a negative perturbation
         !at the end
+        
+        SeaLevel = 0.0
 
-        IF (t < 2000.0) THEN
-                SeaLevel = 0.0
-        ELSE
-                SeaLevel = -40.0 + 0.02*t
+        !IF (t < 2000.0) THEN
+        !        SeaLevel = 0.0
+        !ELSE
+        !        SeaLevel = -40.0 + 0.02*t
         !ELSE IF (t < 12000.0) THEN
                 !SeaLevel = 160.0
         !ELSE IF (t < 12000.0) THEN
@@ -30,7 +32,7 @@ FUNCTION getSeaLevel( Model, nodenumber, t ) RESULT( SeaLevel )
         !ELSE IF (t < 26000.0) THEN
         !        SeaLevel = 480.0 - 0.02*t
         !ELSE
-        !        SeaLevel = 0.0
-        END IF
+        !!        SeaLevel = 0.0
+        !END IF
         ! write(*,*) 'Sea level: ', SeaLevel
 END FUNCTION getSeaLevel
