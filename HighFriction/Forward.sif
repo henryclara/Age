@@ -41,18 +41,18 @@ Simulation
 
   Timestepping Method = "bdf"
   BDF Order = 1
-  Timestep Intervals = 2
-  Output Intervals = 2
-  Timestep Sizes = 0.1
+  Timestep Intervals = 100
+  Output Intervals = 50
+  Timestep Sizes = 0.5
 
   Initialize Dirichlet Conditions = Logical False
   Steady State Max Iterations = 1
   Steady State Min Iterations = 1
 
-	Restart File="Forward010750.result"
+	Restart File="Forward002000.result"
 	Restart Before Initial Conditions = Logical True
 	!Specify name of result file. Used for restarts!!
-  Output File = "Forward010800.result"
+  Output File = "Forward002050.result"
   max output level = 30
 End
 
@@ -93,6 +93,7 @@ End
 
 !! for ice
 Initial Condition 1
+  Age = Real 0.0
 End
 
 !! for top free surface
@@ -226,6 +227,8 @@ Solver 4
   Exported Variable 5 = -dofs 1 "RiseIntoShelf"
   Exported Variable 6 = -dofs 1 "BedBump"
   Exported Variable 7 = -dofs 1 "FluxInit"
+  Exported Variable 8 = -dofs 1 "Mesh Velocity"
+  Exported Variable 9 = -dofs 1 "Mesh Change"
   Flow Model = String "Stokes"
 End
 
@@ -396,22 +399,45 @@ Solver 12
   Parameter 1 = String "Sea Level"
 End
 
+!Solver 13
+!  ! Exec Solver   = "Never"!"Before All"
+!  Equation      = "Age Equation"
+!  Variable      = String "Age"
+!  Variable DOFs =  1
+!
+!  Flow Solution Name = String "Flow Solution"
+!  Linear System Solver = Iterative
+!  Linear System Max Iterations = 1
+!  Linear System Iterative Method = Diagonal
+!  Linear System Preconditioning = NoNe
+!  Linear System Convergence Tolerance = Real 1.0e-6
+!  Linear System Abort Not Converged = False
+!  Linear System Residual Output = 0
+
+!  Procedure = "./src/AgeSolver" "AgeSolver"
+!End
+
 Solver 13
-  ! Exec Solver   = "Never"!"Before All"
-  Equation      = "Age Equation"
-  Variable      = String "Age"
+  Exec Solver = Always !Never
+  Equation = "Age Equation"
+
+  Variable = String "Age"
   Variable DOFs =  1
 
   Flow Solution Name = String "Flow Solution"
-  Linear System Solver = Iterative
-  Linear System Max Iterations = 1
-  Linear System Iterative Method = Diagonal
-  Linear System Preconditioning = NoNe
-  Linear System Convergence Tolerance = Real 1.0e-6
-  Linear System Abort Not Converged = False
-  Linear System Residual Output = 0
+  ! Linear System Solver = Iterative
+  ! Linear System Max Iterations = 1000
+  ! Linear System Iterative Method = Diagonal
+  ! Linear System Preconditioning = NoNe
+  ! Linear System Convergence Tolerance = Real 1.0e-6
+  ! Linear System Abort Not Converged = False
+  ! Linear System Residual Output = 0
+  Linear System Solver = Direct
+  Linear System Direct Method = mumps
+  mumps percentage increase working space = integer 1000
 
   Procedure = "./src/AgeSolverRD" "AgeSolver"
+  Exported Variable 1 = -dofs 1 "age"
 End
 
 Solver 14
@@ -419,7 +445,7 @@ Solver 14
   Equation = "result output"
   Procedure = "ResultOutputSolve" "ResultOutputSolver"
   Save Geometry Ids = Logical True ! add this line if you want to access boundaries in Paraview
-  Output File Name = File "Forward010800"
+  Output File Name = File "Forward002050"
   Output Format = String vtu
 End
 
@@ -455,6 +481,8 @@ End
 
 Equation 1
   Active Solvers (10) = 1 2 4 5 6 10 12 13 14 15
+  Flow Solution Name = String "Flow Solution"
+  Convection = String Computed
 End
 
 Equation 2
@@ -477,7 +505,7 @@ End
 Boundary Condition 1
   Name = "back"
   Target Boundaries = 1
-  Age = Real 500.0
+  Age = Real 0.0
 	Velocity 1 = Variable FluxInit
 		Real Procedure "src/BedrockBump" "IceFluxAtBack"
 	Velocity 2 = Real 0.0
@@ -571,4 +599,5 @@ Boundary Condition 6
   Target Boundaries = 6
   Body Id = 2
   ComputeNormal = Logical False
+  Age = Real 0.0
 End

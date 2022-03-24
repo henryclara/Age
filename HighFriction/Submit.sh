@@ -6,7 +6,7 @@
 #SBATCH --get-user-env
 #SBATCH --account=bm1164
 #SBATCH --ntasks=80
-#SBATCH --time=00:30:00
+#SBATCH --time=08:00:00
 #SBATCH --partition=compute,compute2
 #=================================================================================================================
 set -e
