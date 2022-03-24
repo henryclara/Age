@@ -13,7 +13,7 @@ $A = 4.6e-25*yearinsec*1.0e18
 $n = 3.0
 $eta = 1.0/(2.0*A)^(1.0/n)
 $gravity = -9.8*yearinsec^2
-$C = 3.812e8/(1.0e6*yearinsec^(1.0/3.0))
+$C = 7.624e7/(1.0e6*yearinsec^(1.0/3.0))
 
 
 Header
@@ -37,22 +37,22 @@ End
 Simulation
   Coordinate System  = Cartesian 3D
   Simulation Type = transient
-  Extruded Mesh Levels = Integer 10
+  Extruded Mesh Levels = Integer 20
 
   Timestepping Method = "bdf"
   BDF Order = 1
-  Timestep Intervals = 100
-  Output Intervals = 50
+  Timestep Intervals = 100.0
+  Output Intervals = 1
   Timestep Sizes = 0.5
 
   Initialize Dirichlet Conditions = Logical False
   Steady State Max Iterations = 1
   Steady State Min Iterations = 1
 
-	Restart File="Forward002850.result"
+	Restart File="ForwardSTART.result"
 	Restart Before Initial Conditions = Logical True
 	!Specify name of result file. Used for restarts!!
-  Output File = "Forward002900.result"
+  Output File = "ForwardEND.result"
   max output level = 30
 End
 
@@ -205,7 +205,7 @@ Solver 4
 	Optimize Bandwidth = Logical True
   Linear System Solver = Direct
   Linear System Direct Method = "Mumps"
-	Mumps percentage increase working space = Integer 2000
+	Mumps percentage increase working space = Integer 1600
 
   Nonlinear System Max Iterations = 50
   Nonlinear System Convergence Tolerance  = 1.0e-6
@@ -233,6 +233,7 @@ Solver 4
 End
 
 Solver 5
+  Exec Solver = Never
   Equation = String "StressSolver"
   Procedure =  File "ElmerIceSolvers" "ComputeDevStress"
   ! this is just a dummy, hence no output is needed
@@ -399,24 +400,6 @@ Solver 12
   Parameter 1 = String "Sea Level"
 End
 
-!Solver 13
-!  ! Exec Solver   = "Never"!"Before All"
-!  Equation      = "Age Equation"
-!  Variable      = String "Age"
-!  Variable DOFs =  1
-!
-!  Flow Solution Name = String "Flow Solution"
-!  Linear System Solver = Iterative
-!  Linear System Max Iterations = 1
-!  Linear System Iterative Method = Diagonal
-!  Linear System Preconditioning = NoNe
-!  Linear System Convergence Tolerance = Real 1.0e-6
-!  Linear System Abort Not Converged = False
-!  Linear System Residual Output = 0
-
-!  Procedure = "./src/AgeSolver" "AgeSolver"
-!End
-
 Solver 13
   Exec Solver = Always !Never
   Equation = "Age Equation"
@@ -445,7 +428,7 @@ Solver 14
   Equation = "result output"
   Procedure = "ResultOutputSolve" "ResultOutputSolver"
   Save Geometry Ids = Logical True ! add this line if you want to access boundaries in Paraview
-  Output File Name = File "Forward002900"
+  Output File Name = File "ForwardEND"
   Output Format = String vtu
 End
 
@@ -481,8 +464,6 @@ End
 
 Equation 1
   Active Solvers (10) = 1 2 4 5 6 10 12 13 14 15
-  Flow Solution Name = String "Flow Solution"
-  Convection = String Computed
 End
 
 Equation 2
