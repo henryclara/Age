@@ -1,0 +1,16 @@
+This code simulates an ice rise with stratigraphy.
+
+Current simulations:
+
+- TestPS15Layers
+- TestPS20Layers
+- TestPS25Layers
+- TestPS30Layers
+- TestPSAddExportedVariables
+- TestPSAgeSolver
+
+Notes:
+
+24.03.22
+
+ParStokes currently working without an age solver (simulations with parstokes and the age solver are currently running, however). Simulations need to have reached the forward simulation before checking whether the age solver has worked. 
