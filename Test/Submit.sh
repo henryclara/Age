@@ -1,7 +1,7 @@
 #!/bin/bash
-#SBATCH -o /work/bm1164/m300832/Age/TestMoreLayers/SLURM_job.%j.%N.out
-#SBATCH -e /work/bm1164/m300832/Age/TestMorelayers/SLURM_job.%j.%N.err
-#SBATCH -D /work/bm1164/m300832/Age/TestMoreLayers
+#SBATCH -o /work/bm1164/m300832/Age/Test/SLURM_job.%j.%N.out
+#SBATCH -e /work/bm1164/m300832/Age/Test/SLURM_job.%j.%N.err
+#SBATCH -D /work/bm1164/m300832/Age/Test
 #SBATCH -J IceRiseForward
 #SBATCH --get-user-env
 #SBATCH --account=bm1164
@@ -24,7 +24,7 @@ YearCounter=$1
 echo YearCounter is: $YearCounter
 if [ "${YearCounter}" -lt "14000" ]; then
 	YearCounterFormatted=$(printf %06d $YearCounter)
-	YearCounter=$(($YearCounter+1))
+	YearCounter=$(($YearCounter+50))
 	YearCounterFormattedNew=$(printf %06d $YearCounter)
 	cp Forward.sif.bak Forward.sif
 	sed -i "s/START/${YearCounterFormatted}/g" Forward.sif

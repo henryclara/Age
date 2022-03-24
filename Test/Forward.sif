@@ -37,22 +37,22 @@ End
 Simulation
   Coordinate System  = Cartesian 3D
   Simulation Type = transient
-  Extruded Mesh Levels = Integer 10
+  Extruded Mesh Levels = Integer 11
 
   Timestepping Method = "bdf"
   BDF Order = 1
-  Timestep Intervals = 10
-  Output Intervals = 1
-  Timestep Sizes = 0.1
+  Timestep Intervals = 100
+  Output Intervals = 50
+  Timestep Sizes = 0.5
 
   Initialize Dirichlet Conditions = Logical False
   Steady State Max Iterations = 1
   Steady State Min Iterations = 1
 
-	Restart File="ForwardSTART.result"
+	Restart File="Forward002000.result"
 	Restart Before Initial Conditions = Logical True
 	!Specify name of result file. Used for restarts!!
-  Output File = "ForwardEND.result"
+  Output File = "Forward002050.result"
   max output level = 30
 End
 
@@ -445,7 +445,7 @@ Solver 14
   Equation = "result output"
   Procedure = "ResultOutputSolve" "ResultOutputSolver"
   Save Geometry Ids = Logical True ! add this line if you want to access boundaries in Paraview
-  Output File Name = File "ForwardEND"
+  Output File Name = File "Forward002050"
   Output Format = String vtu
 End
 
