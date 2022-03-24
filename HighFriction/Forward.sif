@@ -49,10 +49,10 @@ Simulation
   Steady State Max Iterations = 1
   Steady State Min Iterations = 1
 
-	Restart File="Forward002000.result"
+	Restart File="Forward002050.result"
 	Restart Before Initial Conditions = Logical True
 	!Specify name of result file. Used for restarts!!
-  Output File = "Forward002050.result"
+  Output File = "Forward002100.result"
   max output level = 30
 End
 
@@ -445,7 +445,7 @@ Solver 14
   Equation = "result output"
   Procedure = "ResultOutputSolve" "ResultOutputSolver"
   Save Geometry Ids = Logical True ! add this line if you want to access boundaries in Paraview
-  Output File Name = File "Forward002050"
+  Output File Name = File "Forward002100"
   Output Format = String vtu
 End
 
