@@ -357,6 +357,8 @@ Solver 7
   Exported Variable 5 = -dofs 1 "RiseIntoShelf"
   Exported Variable 6 = -dofs 1 "BedBump"
   Exported Variable 7 = -dofs 1 "FluxInit"
+  Exported Variable 8 = -dofs 1 "Mesh Velocity"
+  Exported Variable 9 = -dofs 1 "Mesh Change"
 End
 
 Solver 8
