@@ -114,7 +114,7 @@ JobName=IceRiseForward
 ###############################################################################
 BaseDir=/work/bm1164/m300832/Age/SyntheticExperiments/ # this path is the
 #directory under which the run will be writtensh 
-RunDirName=TestPSAddExportedVariables
+RunDirName=TestPSAgeSolver
 #this variable is the name of the run directory. Change to whatever you like!
 ###############################################################################
 #### END OF USER INTERFACE !!! ################################################

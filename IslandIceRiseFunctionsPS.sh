@@ -781,6 +781,7 @@ End
 
 !! for ice
 Initial Condition 1
+  Age = Real 0.0
 End
 
 !! for top free surface
@@ -1121,6 +1122,29 @@ Solver 12
 End
 
 Solver 13
+  Exec Solver = Always !Never
+  Equation = "Age Equation"
+
+  Variable = String "Age"
+  Variable DOFs =  1
+
+  Flow Solution Name = String "Flow Solution"
+  ! Linear System Solver = Iterative
+  ! Linear System Max Iterations = 1000
+  ! Linear System Iterative Method = Diagonal
+  ! Linear System Preconditioning = NoNe
+  ! Linear System Convergence Tolerance = Real 1.0e-6
+  ! Linear System Abort Not Converged = False
+  ! Linear System Residual Output = 0
+  Linear System Solver = Direct
+  Linear System Direct Method = mumps
+  mumps percentage increase working space = integer 1000
+
+  Procedure = "./src/AgeSolverRD" "AgeSolver"
+  Exported Variable 1 = -dofs 1 "age"
+End
+
+Solver 14
   Exec Solver = After Saving
   Equation = "result output"
   Procedure = "ResultOutputSolve" "ResultOutputSolver"
@@ -1135,7 +1159,7 @@ End
 !---------------------------------------------------
 
 Equation 1
-  Active Solvers (8) = 1 2 4 5 6 7 8 13 
+  Active Solvers (9) = 1 2 4 5 6 7 8 13 14
 End
 
 Equation 2
@@ -1157,6 +1181,7 @@ End
 Boundary Condition 1
   Name = "back"
   Target Boundaries = 1
+  Age = Real 0.0
 	FlowVar 1 = Variable FluxInit
 		Real Procedure "src/BedrockBump" "IceFluxAtBack"
 	FlowVar 2 = Real 0.0
