@@ -36,3 +36,10 @@ BedInit750Layers30
 
 HigherFriction: One set of time steps has been run with the age initial condition, now restarted with the age initial condition turned off.
 
+BedInit*: Init restarted with just one short timestep, i.e. 1, 1, 0.1
+
+
+
+
+
+
