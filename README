@@ -13,4 +13,9 @@ Notes:
 
 24.03.22
 
-ParStokes currently working without an age solver (simulations with parstokes and the age solver are currently running, however). Simulations need to have reached the forward simulation before checking whether the age solver has worked. 
+ParStokes currently working without an age solver (simulations with parstokes and the age solver are currently running, however). Simulations need to have reached the forward simulation before checking whether the age solver has worked.
+
+25.03.22
+
+TestPS20Layers crashed in forward simulation
+ 
