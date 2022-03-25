@@ -153,6 +153,7 @@ Initial Condition 1
 	FluxInit = Real $FluxInit
 	BedBump = Variable BedInit
 			Real Procedure "src/BedrockBump" "BedrockBump"
+  Age = Real 0.0
 End
 
 !! for top free surface
@@ -362,6 +363,7 @@ Solver 7
 End
 
 Solver 8
+  Exec Solver = Never
   Equation = String "StressSolver"
   Procedure =  File "ElmerIceSolvers" "ComputeDevStress"
   ! this is just a dummy, hence no output is needed
@@ -502,6 +504,29 @@ Solver 12
 End
 
 Solver 13
+  Exec Solver = Always !Never
+  Equation = "Age Equation"
+
+  Variable = String "Age"
+  Variable DOFs =  1
+
+  Flow Solution Name = String "Flow Solution"
+  ! Linear System Solver = Iterative
+  ! Linear System Max Iterations = 1000
+  ! Linear System Iterative Method = Diagonal
+  ! Linear System Preconditioning = NoNe
+  ! Linear System Convergence Tolerance = Real 1.0e-6
+  ! Linear System Abort Not Converged = False
+  ! Linear System Residual Output = 0
+  Linear System Solver = Direct
+  Linear System Direct Method = mumps
+  mumps percentage increase working space = integer 1000
+
+  Procedure = "./src/AgeSolverRD" "AgeSolver"
+  Exported Variable 1 = -dofs 1 "age"
+End
+
+Solver 14
   Exec Solver = After Saving
   Equation = "result output"
   Procedure = "ResultOutputSolve" "ResultOutputSolver"
@@ -516,7 +541,9 @@ End
 !---------------------------------------------------
 
 Equation 1
-  Active Solvers (8) = 1 3 5 6 7 8 9 13 
+  Active Solvers (8) = 1 3 5 6 7 8 9 13 14
+  Flow Solution Name = String "FlowVar"
+  Convection = String Computed
 End
 
 Equation 2
@@ -545,6 +572,7 @@ Boundary Condition 1
 	V 1 = Variable FluxInit
 		Real Procedure "src/BedrockBump" "IceFluxAtBack"
 	V 2 = Real 0.0
+  Age = Real 0.0
 End
 
 Boundary Condition 2
@@ -656,6 +684,7 @@ Boundary Condition 6
   Target Boundaries = 6
   Body Id = 2
   ComputeNormal = Logical False
+  Age = Real 0.0
 End
 EOF
 }
@@ -781,7 +810,7 @@ End
 
 !! for ice
 Initial Condition 1
-  Age = Real 0.0
+  !Age = Real 0.0
 End
 
 !! for top free surface
@@ -969,6 +998,8 @@ Solver 6
   Exported Variable 5 = -dofs 1 "RiseIntoShelf"
   Exported Variable 6 = -dofs 1 "BedBump"
   Exported Variable 7 = -dofs 1 "FluxInit"
+  Exported Variable 8 = -dofs 1 "Mesh Velocity"
+  Exported Variable 9 = -dofs 1 "Mesh Change"
 End
 
 Solver 7
