@@ -1630,7 +1630,7 @@ Solver 12
 End
 
 Solver 13
-  Exec Solver = Always !Never
+  Exec Solver = Never
   Equation = "Age Equation"
 
   Variable = String "Age"

@@ -17,5 +17,22 @@ ParStokes currently working without an age solver (simulations with parstokes an
 
 25.03.22
 
-TestPS20Layers crashed in forward simulation
- 
+Simulations currently downloading. Assessment will be made after viewing vtus in paraview. Note: none of these sims are running.
+
+TestPS15Layers:
+TestPS20Layers: crashed in forward simulation
+TestPS25Layers:
+TestPS30Layers:
+TestPSAddExportedVariables:
+TestPSAgeSolver:
+
+Simulations started:
+
+BedInit650Layers30
+BedInit700Layers30
+BedInit750Layers30
+
+(These simulations are for checking the lowest bedrock with which an ice rise forms, all running at 11:30)
+
+HigherFriction: One set of time steps has been run with the age initial condition, now restarted with the age initial condition turned off.
+

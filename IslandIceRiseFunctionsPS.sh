@@ -92,9 +92,9 @@ Simulation
 
   Timestepping Method = "bdf"
   BDF Order = 1
-  Timestep Intervals = 1
-  Output Intervals = 1
-  Timestep Sizes = 0.01
+  Timestep Intervals = 100
+  Output Intervals = 50
+  Timestep Sizes = 0.5
 
   Initialize Dirichlet Conditions = Logical False
   Steady State Max Iterations = 6
@@ -1122,7 +1122,7 @@ Solver 12
 End
 
 Solver 13
-  Exec Solver = Always !Never
+  Exec Solver = Never
   Equation = "Age Equation"
 
   Variable = String "Age"

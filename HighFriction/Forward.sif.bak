@@ -93,7 +93,7 @@ End
 
 !! for ice
 Initial Condition 1
-  Age = Real 0.0
+  !Age = Real 0.0
 End
 
 !! for top free surface
