@@ -1118,6 +1118,7 @@ CreateSLURMSubmitScriptForward(){
 				ForwardSif=${9}
 				SuperComputer=${10}
 				Email=${11}
+				OutputInterval=${12}
 				echo $RunTime
 
 cat > Submit.sh << EOF
@@ -1171,7 +1172,7 @@ YearCounter=\$1
 echo YearCounter is: \$YearCounter
 if [ "\${YearCounter}" -lt "${TotalSimLength}" ]; then
 	YearCounterFormatted=\$(printf %06d \$YearCounter)
-	YearCounter=\$((\$YearCounter+$SimLength))
+	YearCounter=\$((\$YearCounter+25))
 	YearCounterFormattedNew=\$(printf %06d \$YearCounter)
 	cp ${ForwardSif}.bak ${ForwardSif}
 	sed -i "s/START/\${YearCounterFormatted}/g" $ForwardSif

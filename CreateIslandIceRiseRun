@@ -26,7 +26,7 @@ RemeshSif=IceRiseRemesh.sif # name of the remesh sif file
 ##### Ice geometry parameters #################################################
 ###############################################################################
 BumpHeight=500.0 # height of the (now flattened) gaussian bump
-BedTopoInit=-750.0
+BedTopoInit=-650.0
 ZbInit=-270.0 
 ZsInit=30.0
 xCenter=40000.0 # center of gaussian bump in x-direction
@@ -114,7 +114,7 @@ JobName=IceRiseForward
 ###############################################################################
 BaseDir=/work/bm1164/m300832/Age/SyntheticExperiments/ # this path is the
 #directory under which the run will be writtensh 
-RunDirName=BedInit750Layers30
+RunDirName=BedInit650Layers30
 #this variable is the name of the run directory. Change to whatever you like!
 ###############################################################################
 #### END OF USER INTERFACE !!! ################################################
@@ -257,7 +257,7 @@ fi
 echo $JobName
 CreateSLURMSubmitScriptForward $ForwardDir $NoOfNodes $ProcNo $Queue \
 				$RunTimeForward $JobName $LengthOfSingleSimulation $TotalSimLength \
-				$ForwardSifName $SuperComputer $Email
+				$ForwardSifName $SuperComputer $Email $OutputInterval
 #$JobNameInit $LengthOfSingleSimulation $TotalSimLength 1 $ForwardDir 
 #CreateSLURMSubmitScriptForward $ForwardDir $NoOfNodes $ProcNo $Queue \
 #$RunTimeForward $JobName $ForwarSifName 
