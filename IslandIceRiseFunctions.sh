@@ -391,7 +391,8 @@ submit: ini
 
 	mpirun -n $NumProcs ElmerSolver_mpi
 
-compile:  
+compile:
+	elmerf90 src/AgeSolverRD.f90 -o src/AgeSolverRD  
 	elmerf90 src/DistanceSolveRD.f90 -o src/DistanceSolveRD
 	elmerf90 src/BedrockBump.f90 -o src/BedrockBump
 	elmerf90 src/GroundedMaskSolver.f90 -o src/GroundedMaskSolver

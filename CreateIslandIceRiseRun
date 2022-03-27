@@ -26,7 +26,7 @@ RemeshSif=IceRiseRemesh.sif # name of the remesh sif file
 ##### Ice geometry parameters #################################################
 ###############################################################################
 BumpHeight=500.0 # height of the (now flattened) gaussian bump
-BedTopoInit=-650.0
+BedTopoInit=-750.0
 ZbInit=-270.0 
 ZsInit=30.0
 xCenter=40000.0 # center of gaussian bump in x-direction
@@ -85,8 +85,8 @@ ForwardDirName=Forward
 ForwardSifName=Forward.sif
 ForwardOutputName=Forward
 TimeStepSize=0.5 # (keep the same for short sim)
-OutputInterval=1 # 1 (for short sim, originally 50)
-TotalSimLength=2 # 10 (for short sim, originally 1000)
+OutputInterval=50 # 1 (for short sim, originally 50)
+TotalSimLength=5000 # 10 (for short sim, originally 1000)
 LengthOfSingleSimulation=50 # 10 (for short sim)
 NoOfTimeSteps=$(echo "scale=1; $LengthOfSingleSimulation/$TimeStepSize" | bc -l)
 #echo $TimeStepSize
@@ -114,7 +114,7 @@ JobName=IceRiseForward
 ###############################################################################
 BaseDir=/work/bm1164/m300832/Age/SyntheticExperiments/ # this path is the
 #directory under which the run will be writtensh 
-RunDirName=BedInit650Layers30
+RunDirName=BedInit750Layers30
 #this variable is the name of the run directory. Change to whatever you like!
 ###############################################################################
 #### END OF USER INTERFACE !!! ################################################

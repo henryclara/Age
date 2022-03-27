@@ -504,7 +504,7 @@ Solver 12
 End
 
 Solver 13
-  Exec Solver = Always !Never
+  Exec Solver = Never
   Equation = "Age Equation"
 
   Variable = String "Age"
@@ -758,7 +758,7 @@ Simulation
 
   Timestepping Method = "bdf"
   BDF Order = 1
-  Timestep Intervals = 100
+  Timestep Intervals = 50
   Output Intervals = 50
   Timestep Sizes = 0.5
 
