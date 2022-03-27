@@ -85,7 +85,7 @@ ForwardDirName=Forward
 ForwardSifName=Forward.sif
 ForwardOutputName=Forward
 TimeStepSize=0.5 # (keep the same for short sim)
-OutputInterval=50 # 1 (for short sim, originally 50)
+OutputInterval=25 # 1 (for short sim, originally 50)
 TotalSimLength=5000 # 10 (for short sim, originally 1000)
 LengthOfSingleSimulation=50 # 10 (for short sim)
 NoOfTimeSteps=$(echo "scale=1; $LengthOfSingleSimulation/$TimeStepSize" | bc -l)
