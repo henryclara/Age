@@ -38,7 +38,11 @@ HigherFriction: One set of time steps has been run with the age initial conditio
 
 BedInit*: Init restarted with just one short timestep, i.e. 1, 1, 0.1
 
+28.03.22
 
+BedInit650Layers30 at 50 years: looks likely to be stable. ParStokes converging nicely
+BedInit700Layers30 at 75 years: looks likely to be stable (close to threshold point, however). ParStokes not converging nicely. Will this alleviate itself as the system evolves?
+BedInit750Layers30 at 100 years: has switched from an ice rise to an ice rumple. ParStokes not converging
 
 
 
