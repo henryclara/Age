@@ -64,7 +64,7 @@
 
           !NORMAL BUMP
 
-          Bump = Ampl * exp(-(((x - x0)**2 + (y - y0)**2)**2)/(2*sigmax**4))
+          Bump = Ampl * exp(-(((0.5*(x - x0))**2 + (y - y0)**2)**2)/(2*sigmax**4))
           BedBump = Bedrock+Bump
           !write(*,*) 'BUMP',BedBump
 
