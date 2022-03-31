@@ -44,6 +44,17 @@ BedInit650Layers30 at 50 years: looks likely to be stable. ParStokes converging 
 BedInit700Layers30 at 75 years: looks likely to be stable (close to threshold point, however). ParStokes not converging nicely. Will this alleviate itself as the system evolves?
 BedInit750Layers30 at 100 years: has switched from an ice rise to an ice rumple. ParStokes not converging
 
+Command for checking convergence of a ParStokes simulation:
+grep Stokes SLURM....
 
+31.03.22
 
+BedInit650Layers30 at 375 yrs. Turned on age solver (first output in *400 or *425). Not converging, but close to convergence tolerance.
+BedInit700Layers30 at 425 yrs. Turned on age solver (first output in *450 or *475). Not converging fully after 35 iterations, but very close to convergence tolerance.
 
+(Added the "Age = Real 0.0" command for BC 6 in both sims)
+
+BedInit750Layers30 ungrounded at 200 yrs.
+
+Started a simulation to test convergence for 10 layers:
+Name: BedInit650Layers10
