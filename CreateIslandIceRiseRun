@@ -19,7 +19,7 @@ DomWidth=60000 # in meters
 BackgroundRes=2000 # in meters
 MaxRes=350 # in meters
 RefineRadius=5000 # in meters
-VertMeshLayers=30 # number of vertical layers
+VertMeshLayers=10 # number of vertical layers
 RemeshingDirName=Remesh # name of remeshing direcotry
 RemeshSif=IceRiseRemesh.sif # name of the remesh sif file
 ###############################################################################
@@ -114,7 +114,7 @@ JobName=IceRiseForward
 ###############################################################################
 BaseDir=/work/bm1164/m300832/Age/SyntheticExperiments/ # this path is the
 #directory under which the run will be writtensh 
-RunDirName=BedInit650Layers30
+RunDirName=BedInit650Layers10
 #this variable is the name of the run directory. Change to whatever you like!
 ###############################################################################
 #### END OF USER INTERFACE !!! ################################################
