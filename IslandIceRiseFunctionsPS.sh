@@ -1153,7 +1153,7 @@ Solver 12
 End
 
 Solver 13
-  Exec Solver = Never
+  !Exec Solver = Never
   Equation = "Age Equation"
 
   Variable = String "Age"
@@ -1330,6 +1330,7 @@ Boundary Condition 6
   Target Boundaries = 6
   Body Id = 2
   ComputeNormal = Logical False
+  Age = Real 0.0
 End
 EOF
 }
